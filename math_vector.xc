@@ -1,11 +1,77 @@
 ; Vector Library
 ; Supprts 2, 3 or 4 value vectors
 ;
+; 
+; 
+;	===== Constants =====
+;	Get prebuilt vectors	
+;
+;	$vec2_zero
+;	$vec2_right
+;	$vec2_up
+;
+;	$vec3_zero
+;	$vec3_right
+;	$vec3_up
+;	$vec3_forward
+;
+;	$vec4_zero
+;	$vec4_right
+;	$vec4_up
+;	$vec4_forward
 ;
 ;
 ;
 ;
-
+;	===== Constructors =====
+;	Construct a Vector with values
+;
+;	@vec2_new($x:number, $y:number) : text
+;	@vec3_new($x:number, $y:number, $z:number) : text
+;	@vec4_new($x:number, $y:number, $z:number, $w:number) : text
+;
+;
+;	==== Properties =====
+;	Get a property of a vector	
+;
+;	@vec2_magnitude ($vec:text):number
+;	@vec3_magnitude ($vec:text):number
+;	@vec4_magnitude ($vec:text):number
+;
+;	@vec2_sqr_magnitude ($vec:text):number
+;	@vec3_sqr_magnitude ($vec:text):number
+;	@vec4_sqr_magnitude ($vec:text):number
+;
+;	@vec2_normal ($vec:text):text
+;	@vec3_normal ($vec:text):text
+;	@vec4_normal ($vec:text):text
+;
+;	
+;	===== Arithmetic =====
+;	Perform math operations on vectors
+;
+;	@vec2_add($vec_0:text, $vec_1:text):text
+;	@vec3_add($vec_0:text, $vec_1:text):text
+;	@vec4_add($vec_0:text, $vec_1:text):text
+;	@vec2_subtract($vec_0:text, $vec_1:text):text
+;	@vec3_subtract($vec_0:text, $vec_1:text):text
+;	@vec4_subtract($vec_0:text, $vec_1:text):text
+;	@vec2_distance($vec_0:text, $vec_1:text):number
+;	@vec3_distance($vec_0:text, $vec_1:text):number
+;	@vec4_distance($vec_0:text, $vec_1:text):number
+;
+;
+;	===== Equality =====
+;	Check if vectors are equal
+;	Returns 0/1 (true/false)
+;
+;	@vec2_equal($vec_0:text, $vec_1:text):number
+;	@vec3_equal($vec_0:text, $vec_1:text):number
+;	@vec4_equal($vec_0:text, $vec_1:text):number
+;
+;
+;
+;
 
 
 
@@ -26,6 +92,44 @@ const $vec4_zero = ".x{0}.y{0}.z{0}.w{0}.type{4}"
 const $vec4_right = ".x{1}.y{0}.z{0}.w{1}.type{4}"
 const $vec4_up = ".x{0}.y{1}.z{0}.w{1}.type{4}"
 const $vec4_forward = ".x{0}.y{0}.z{1}.w{1}.type{4}"
+
+
+
+
+
+; ===== Constructors
+
+function @vec2_new($x:number, $y:number) : text
+	var $out = ""
+	$out.x = $x
+	$out.y = $y
+	$out.type = 2
+	return $out
+
+function @vec3_new($x:number, $y:number, $z:number) : text
+	var $out = ""
+	$out.x = $x
+	$out.y = $y
+	$out.z = $z
+	$out.type = 3
+	return $out
+	
+function @vec4_new($x:number, $y:number, $z:number, $w:number) : text
+	var $out = ""
+	$out.x = $x
+	$out.y = $y
+	$out.z = $z
+	$out.w = $w
+	$out.type = 4
+	return $out
+
+
+
+
+
+
+
+
 
 
 
@@ -111,6 +215,14 @@ function @vec4_normal ($vec:text):text
 		$result.w /= $magnitude
 
 	return $result
+
+
+
+
+
+
+
+
 
 
 
@@ -229,3 +341,5 @@ function @vec4_equal($vec_0:text, $vec_1:text):number
 	else
 		return 0 ; false, vec are not equal
 	return $result
+	
+
